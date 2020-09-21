@@ -10,15 +10,18 @@ namespace App\Auth;
 
 
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+
+define('TTL_SEC', 60 * 60);
 
 class AuthUtil
 {
   public static function auth($user)
   {
     // ここでUUID等のユニークな文字列を作成する
-    $token = 'fasdfasfweafcsac';
-    Cache::put($token, $user);
+    $token = Str::uuid();
+    Cache::put($token, $user, TTL_SEC);
     return $token;
   }
 
@@ -32,6 +35,8 @@ class AuthUtil
     if (!$user) {
       throw new HttpException(401);
     }
+    // cacheの延命処理
+    Cache::put($token, $user, TTL_SEC);
     return $user;
 
   }
