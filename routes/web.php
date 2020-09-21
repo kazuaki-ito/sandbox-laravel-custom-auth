@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => 'auth'], function () {
+  Route::get('login', 'AuthController@show')->name('auth.show');
+  Route::post('login', 'AuthController@login')->name('auth.login');
+});
+
+Route::group(['middleware' => ['auth']], function () {
+  Route::get('test', 'TestController@show')->name('test.show');
 });

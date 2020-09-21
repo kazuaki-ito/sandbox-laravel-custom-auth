@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+/*
 Route::group(['prefix' => 'auth'], function () {
   Route::get('login', 'AuthController@login');
 });
@@ -19,3 +20,4 @@ Route::group(['prefix' => 'auth'], function () {
 Route::group(['middleware' => ['auth:api']], function () {
   Route::get('test', 'TestController@test');
 });
+*/

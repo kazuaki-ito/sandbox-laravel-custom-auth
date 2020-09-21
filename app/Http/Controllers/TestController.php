@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 class TestController extends Controller
 {
-  public function test()
+  public function show()
   {
     $user = $this->getUser();
-    return response($user);
+    return view('test')->with(['user' => $user]);
   }
 }
