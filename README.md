@@ -1,3 +1,7 @@
+## 概要
+
+Eloquentを使わない、簡易な認可処理のサンプルです
+
 ## 環境の起動
 ```
 composer install
@@ -23,10 +27,10 @@ protected $routeMiddleware = [
   
 ```
 
-./routes/api.php
+./routes/web.php
 
 ```php
-Route::group(['middleware' => ['auth:api']], function () {
+Route::group(['middleware' => ['auth']], function () {
   
 });
 
